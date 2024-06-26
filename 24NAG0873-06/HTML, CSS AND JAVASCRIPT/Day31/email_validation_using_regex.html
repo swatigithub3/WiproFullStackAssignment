@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Validation</title>
+</head>
+<body>
+    <form id="emailForm">
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required>
+        <button type="submit">Submit</button>
+    </form>
+    <p id="message"></p>
+    <script>
+        document.getElementById('emailForm').addEventListener('submit', function(event){
+            event.preventDefault();
+            const emailInput = document.getElementById('email').value;
+            const messageElement = document.getElementById('message');
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if(emailPattern.test(emailInput)){
+                messageElement.textContent = 'Valid email address.';
+                messageElement.style.color = 'green';
+            } else {
+                messageElement.textContent = 'Invalid email address format.';
+                messageElement.style.color = 'red';
+            }
+        });
+    </script>
+</body>
+</html>
